@@ -27,7 +27,9 @@
   "engines": {
     "node": ">=7.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "json-pointer": "^0.6.0"
+  },
   "devDependencies": {
     "az-gulp-env-lite": "git+https://github.com/xtforgame/az-gulp-env-lite#v0.4.0",
     "babel-core": "^6.14.0",
@@ -45,7 +47,11 @@
     "eslint-plugin-react": "^6.9.0",
     "gulp": "^3.9.1",
     "mocha": "^3.0.2",
+    "pg": "^7.4.0",
     "rimraf": "^2.5.4"
+  },
+  "peerDependencies": {
+    "sequelize": ">=3.30.4"
   },
   "false": {}
 }
