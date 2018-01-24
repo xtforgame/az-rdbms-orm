@@ -65,7 +65,7 @@ describe('AzRdbmsOrm test', function(){
         let users = azRdbmsMgr.azRdbmsOrm.getModel('users');
         return azRdbmsMgr.sequelizeDb.transaction({
           isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.SERIALIZABLE,
-          // deferrable: Sequelize.Deferrable.SET_DEFERRED(['mn_user_user_group_user_id_fkey']),
+          deferrable: Sequelize.Deferrable.SET_DEFERRED,
         })
         .then(t => {
           return users.create({

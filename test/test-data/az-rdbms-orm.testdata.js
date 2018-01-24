@@ -350,6 +350,22 @@ let getAroModelDefs00 = () => ({
       pAs: ['role'],
       columns: {
         id: {type: Sequelize.BIGINT.UNSIGNED, primaryKey: true, autoIncrement: true},
+        user_id: {
+          type: Sequelize.BIGINT.UNSIGNED,
+          references: {
+            model: 'tbl_user',
+            key: 'id',
+            deferrable: Sequelize.Deferrable.INITIALLY_DEFERRED,
+          },
+        },
+        user_group_id: {
+          type: Sequelize.BIGINT.UNSIGNED,
+          references: {
+            model: 'tbl_user_group',
+            key: 'id',
+            deferrable: Sequelize.Deferrable.INITIALLY_DEFERRED,
+          },
+        },
         role: Sequelize.STRING,
       },
       names: {
