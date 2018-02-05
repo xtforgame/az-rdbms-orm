@@ -1,6 +1,6 @@
 {
   "name": "az-rdbms-orm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "az-rdbms-orm",
   "main": "dist/library/index.js",
   "repository": {

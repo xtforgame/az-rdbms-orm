@@ -3,17 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = genAddAssociationEx;
+exports.default = genSetAssociationEx;
 
 var _utils = require('../../utils');
 
-function genAddAssociationEx(aroModel) {
-  return function addAssociationEx(submodelData) {
+function genSetAssociationEx(aroModel) {
+  return function setAssociationEx(submodelData) {
     var _this = this;
 
     var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
-    var resultArray = (0, _utils.handleValueArrayForMethod)(this, this.addAssociationEx, submodelData, parent);
+    var resultArray = (0, _utils.handleValueArrayForMethod)(this, this.setAssociationEx, submodelData, parent);
     if (resultArray) return resultArray;
     var submodelName = submodelData.model,
         value = submodelData.value,
@@ -32,7 +32,7 @@ function genAddAssociationEx(aroModel) {
       }
     }
     var submodel = this.getAroModel().getSubmodel(submodelName);
-    var methodName = 'add' + (0, _utils.capitalizeFirstLetter)(submodel.asSingular);
+    var methodName = 'set' + (0, _utils.capitalizeFirstLetter)(submodel.asSingular);
 
     return (0, _utils.handlePromiseCallback)(this[methodName](value, originalOptions), parent, callbackPromise).then(function (result) {
       var associationResult = result;
@@ -50,7 +50,7 @@ function genAddAssociationEx(aroModel) {
         }
         if (result && submodels) {
           var newParent = { result: _this, associationResult: result, parent: parent, inputData: submodelData };
-          return value.addAssociationEx(submodels, newParent).then(function (submodelResult) {
+          return value.setAssociationEx(submodels, newParent).then(function (submodelResult) {
             return _this;
           });
         }

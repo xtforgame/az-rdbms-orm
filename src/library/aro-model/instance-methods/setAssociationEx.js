@@ -6,9 +6,9 @@ import {
   handlePromiseCallback,
 } from '../../utils';
 
-export default function genAddAssociationEx(aroModel) {
-  return function addAssociationEx(submodelData, parent = null) {
-    const resultArray = handleValueArrayForMethod(this, this.addAssociationEx, submodelData, parent);
+export default function genSetAssociationEx(aroModel) {
+  return function setAssociationEx(submodelData, parent = null) {
+    const resultArray = handleValueArrayForMethod(this, this.setAssociationEx, submodelData, parent);
     if (resultArray) return resultArray;
     let {
       model: submodelName,
@@ -26,7 +26,7 @@ export default function genAddAssociationEx(aroModel) {
       }
     }
     const submodel = this.getAroModel().getSubmodel(submodelName);
-    const methodName = `add${capitalizeFirstLetter(submodel.asSingular)}`;
+    const methodName = `set${capitalizeFirstLetter(submodel.asSingular)}`;
 
     return handlePromiseCallback(this[methodName](value, originalOptions), parent, callbackPromise)
       .then((result) => {
@@ -46,7 +46,7 @@ export default function genAddAssociationEx(aroModel) {
           }
           if (result && submodels) {
             const newParent = { result: this, associationResult: result, parent, inputData: submodelData };
-            return value.addAssociationEx(submodels, newParent)
+            return value.setAssociationEx(submodels, newParent)
               .then(submodelResult => this);
           }
         }
